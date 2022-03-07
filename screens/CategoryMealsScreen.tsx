@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-interface CategoryMealScreenProps {}
+interface CategoryMealsScreenProps {}
 
-const CategoryMealScreen: FC<CategoryMealScreenProps> = () => {
+const CategoryMealsScreen: FC<CategoryMealsScreenProps> = () => {
     return (
         <View style={styles.screen}>
             <Text>The Category Meal Screen</Text>
@@ -19,4 +19,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default CategoryMealScreen;
+export default CategoryMealsScreen;

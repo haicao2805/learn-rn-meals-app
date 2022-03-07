@@ -16,6 +16,12 @@ const CategoryMealsScreen: FC<CategoryMealsScreenProps> = ({ navigation }) => {
                     navigation.navigate("MealDetail");
                 }}
             />
+            <Button
+                title="Go back"
+                onPress={() => {
+                    navigation.goBack();
+                }}
+            />
         </View>
     );
 };

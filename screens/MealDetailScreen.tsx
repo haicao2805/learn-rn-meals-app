@@ -1,12 +1,21 @@
 import { FC } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { NavigationStackProp } from "react-navigation-stack";
 
-interface MealDetailScreenProps {}
+interface MealDetailScreenProps {
+    navigation: NavigationStackProp;
+}
 
-const MealDetailScreen: FC<MealDetailScreenProps> = () => {
+const MealDetailScreen: FC<MealDetailScreenProps> = ({ navigation }) => {
     return (
         <View style={styles.screen}>
             <Text>The Meal Detail Screen</Text>
+            <Button
+                title="Go back to categories"
+                onPress={() => {
+                    navigation.popToTop();
+                }}
+            />
         </View>
     );
 };

@@ -1,25 +1,25 @@
 import { FC } from "react";
 import { Button, StyleSheet, Text, View } from "react-native";
-import { NavigationStackProp } from "react-navigation-stack";
+import { useNavigate, useParams, useSearchParams } from "react-router-native";
+import { CATEGORIES } from "../data/dummy-category";
 
-interface CategoryMealsScreenProps {
-    navigation: NavigationStackProp;
-}
+interface CategoryMealsScreenProps {}
 
-const CategoryMealsScreen: FC<CategoryMealsScreenProps> = ({ navigation }) => {
+const CategoryMealsScreen: FC<CategoryMealsScreenProps> = () => {
+    const navigation = useNavigate();
+    const { categoryId } = useParams();
+
+    const selectedCategory = CATEGORIES.find((item) => item.id === categoryId);
+
     return (
         <View style={styles.screen}>
             <Text>The Category Meal Screen</Text>
-            <Button
-                title="Go to meal detail"
-                onPress={() => {
-                    navigation.navigate("MealDetail");
-                }}
-            />
+            <Text>{selectedCategory?.title}</Text>
+            <Button title="Go to meal detail" onPress={() => {}} />
             <Button
                 title="Go back"
                 onPress={() => {
-                    navigation.goBack();
+                    navigation("/");
                 }}
             />
         </View>

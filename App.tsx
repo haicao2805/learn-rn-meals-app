@@ -1,7 +1,10 @@
 import AppLoading from "expo-app-loading";
 import * as Font from "expo-font";
 import { useState } from "react";
-import MealsNavigation from "./navigation/MealsNavigation";
+import { StyleSheet, View } from "react-native";
+import { NativeRouter, Route, Routes } from "react-router-native";
+import CategoriesScreen from "./screens/CategoriesScreen";
+import CategoryMealsScreen from "./screens/CategoryMealsScreen";
 
 const fetchFonts = () => {
     return Font.loadAsync({
@@ -25,5 +28,23 @@ export default function App() {
         );
     }
 
-    return <MealsNavigation />;
+    return (
+        <NativeRouter>
+            <View style={styles.container}>
+                <Routes>
+                    <Route path={"/"} element={<CategoriesScreen />} />
+                    <Route
+                        path={"/category-meals/:categoryId"}
+                        element={<CategoryMealsScreen />}
+                    />
+                </Routes>
+            </View>
+        </NativeRouter>
+    );
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+    },
+});

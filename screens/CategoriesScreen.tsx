@@ -1,13 +1,18 @@
 import { FC } from "react";
-import { Button, FlatList, StyleSheet, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
-import { NavigationStackProp } from "react-navigation-stack";
+import {
+    Button,
+    FlatList,
+    StyleSheet,
+    Text,
+    View,
+    TouchableOpacity,
+} from "react-native";
 import { CATEGORIES } from "../data/dummy-category";
 import { Category } from "../models/category";
+import { useNavigate } from "react-router-native";
+import { COLORS } from "../constants/colors";
 
-interface CategoriesScreenProps {
-    navigation: NavigationStackProp;
-}
+interface CategoriesScreenProps {}
 
 export interface ListRenderItemInfo<ItemT> {
     item: ItemT;
@@ -21,13 +26,14 @@ export interface ListRenderItemInfo<ItemT> {
     };
 }
 
-const CategoriesScreen: FC<CategoriesScreenProps> = ({ navigation }) => {
+const CategoriesScreen: FC<CategoriesScreenProps> = ({}) => {
+    const navigation = useNavigate();
     const renderGridItem = (itemData: ListRenderItemInfo<Category>) => {
         return (
             <TouchableOpacity
                 style={styles.gridItem}
                 onPress={() => {
-                    navigation.navigate("CategoryMeals");
+                    navigation(`/category-meals/${itemData.item.id}`);
                 }}
             >
                 <View>
@@ -47,10 +53,6 @@ const CategoriesScreen: FC<CategoriesScreenProps> = ({ navigation }) => {
     );
 };
 
-// CategoriesScreen.navigationOptions = {
-//     headerTitle: "Meal Categories",
-// };
-
 const styles = StyleSheet.create({
     screen: {
         flex: 1,
@@ -61,6 +63,7 @@ const styles = StyleSheet.create({
         flex: 1,
         margin: 15,
         height: 100,
+        backgroundColor: COLORS.ACCENT,
     },
 });
 

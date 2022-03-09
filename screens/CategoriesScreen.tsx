@@ -11,6 +11,7 @@ import { CATEGORIES } from "../data/dummy-category";
 import { Category } from "../models/category";
 import { useNavigate } from "react-router-native";
 import { COLORS } from "../constants/colors";
+import MobileHeader from "../components/MobileHeader";
 
 interface CategoriesScreenProps {}
 
@@ -44,12 +45,19 @@ const CategoriesScreen: FC<CategoriesScreenProps> = ({}) => {
     };
 
     return (
-        <FlatList
-            keyExtractor={(item) => item.id}
-            numColumns={2}
-            data={CATEGORIES}
-            renderItem={renderGridItem}
-        />
+        <>
+            <MobileHeader
+                title="Categories"
+                showBackButton={false}
+                onClickBackButton={() => {}}
+            />
+            <FlatList
+                keyExtractor={(item) => item.id}
+                numColumns={2}
+                data={CATEGORIES}
+                renderItem={renderGridItem}
+            />
+        </>
     );
 };
 
